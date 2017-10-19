@@ -72,5 +72,17 @@ class ContentEngine(object):
         """
         return self._r.zrange(self.SIMKEY % item_id, 0, num-1, withscores=True, desc=True)
 
+#def save_res(filename, contents): 
+# fh = open(filename, 'w') 
+#  for content in contents:
+#    fh.write(str(content)) 
+#  fh.close() 
+
 
 content_engine = ContentEngine()
+
+#content_engine.train('sample-data.csv')
+content_engine.train('iroya_data.csv')
+res = content_engine.predict('10261',5)
+print ('################################################')
+print (res)

@@ -12,7 +12,8 @@ class ContentEngineTestCase(unittest.TestCase):
 
         from engines import content_engine
 
-        content_engine.train('sample-data.csv')
+        #content_engine.train('sample-data.csv')
+        content_engine.train('iroya_data.csv')
 
         data = {'item': 1, 'num': 10}
         headers = [('Content-Type', 'application/json'), ('X-API-TOKEN', current_app.config['API_TOKEN'])]
