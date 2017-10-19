@@ -77,12 +77,20 @@ class ContentEngine(object):
 #  for content in contents:
 #    fh.write(str(content)) 
 #  fh.close() 
-
+def save_rec_res(result):
+    fd = open('recommend_itemID.csv','w')
+    fd.write(result)
+    fd.close()
 
 content_engine = ContentEngine()
 
 #content_engine.train('sample-data.csv')
 content_engine.train('iroya_data.csv')
-res = content_engine.predict('10261',5)
+res = content_engine.predict('10472',5)
 print ('################################################')
 print (res)
+rt = res[0][0]
+
+save_rec_res(rt)
+#save the recommend result to file 'recommend_itemID.csv'
+
