@@ -72,25 +72,28 @@ class ContentEngine(object):
         """
         return self._r.zrange(self.SIMKEY % item_id, 0, num-1, withscores=True, desc=True)
 
-#def save_res(filename, contents): 
-# fh = open(filename, 'w') 
-#  for content in contents:
-#    fh.write(str(content)) 
-#  fh.close() 
+
 def save_rec_res(result):
-    fd = open('recommend_itemID.csv','w')
-    fd.write(result)
+    rt = result[0][0].decode("utf-8")
+    fd = open('itemID.csv','w')
+    fd.write(rt)
     fd.close()
 
+def read_item():
+    f = open('itemID.csv','r')
+    str = ''
+    for line in f:
+        str = line.split('.jpg')[0]
+        f.close()
+        return str
+
+
 content_engine = ContentEngine()
-
-#content_engine.train('sample-data.csv')
 content_engine.train('iroya_data.csv')
-res = content_engine.predict('10472',5)
-print ('################################################')
-print (res)
-rt = res[0][0]
 
-save_rec_res(rt)
-#save the recommend result to file 'recommend_itemID.csv'
+item_number = read_item()
+res = content_engine.predict(item_number,5)
+
+save_rec_res(res)
+#save the recommend result to file
 
