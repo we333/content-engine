@@ -76,9 +76,11 @@ class ContentEngine(object):
 def save_rec_res(result):
     #rt = result[0][0].decode("utf-8") + '\n' + result[1][0].decode("utf-8") + '\n' + result[2][0].decode("utf-8") + '\n' + result[3][0].decode("utf-8") + '\n' + result[4][0].decode("utf-8") 
     rt = ''
+    percent = ''
     for rest in result:
         rt = rt + rest[0] + '\n'
-        print(rest[1]+ '\n')
+        percent = rest[1] + '\n'
+        print(percent)
     fd = open('../../tfidf_answer.csv','w')
     fd.write(rt)
     fd.close()
