@@ -75,7 +75,7 @@ class ContentEngine(object):
 
 def save_rec_res(result):
     rt = result[0][0].decode("utf-8")
-    fd = open('itemID.csv','w')
+    fd = open('../../answer.csv','w')
     fd.write(rt)
     fd.close()
 
@@ -88,7 +88,7 @@ def read_item():
         return str
 
 content_engine = ContentEngine()
-content_engine.train('../../answer.csv')
+content_engine.train('iroya_data.csv')
 
 item_number = read_item()
 res = content_engine.predict(item_number,5)
