@@ -78,6 +78,7 @@ def save_rec_res(result):
     rt = ''
     for rest in result:
         rt = rt + rest[0] + '\n'
+        print(rest[1]+ '\n')
     fd = open('../../tfidf_answer.csv','w')
     fd.write(rt)
     fd.close()
