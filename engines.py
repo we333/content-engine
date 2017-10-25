@@ -80,16 +80,15 @@ def save_rec_res(result):
     fd.close()
 
 def read_item():
-    f = open('itemID.csv','r')
+    f = open('../../question.csv','r')
     str = ''
     for line in f:
         str = line.split('.jpg')[0]
         f.close()
         return str
 
-
 content_engine = ContentEngine()
-content_engine.train('iroya_data.csv')
+content_engine.train('../../answer.csv')
 
 item_number = read_item()
 res = content_engine.predict(item_number,5)
