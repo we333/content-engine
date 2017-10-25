@@ -78,8 +78,8 @@ def save_rec_res(result):
     rt = ''
     percent = ''
     for rest in result:
-        rt = rt + rest[0] + '\n'
-        percent = rest[1] + '\n'
+        rt = rt + rest[0].decode("utf-8") + '\n'
+        percent = rest[1].decode("utf-8") + '\n'
         print(percent)
     fd = open('../../tfidf_answer.csv','w')
     fd.write(rt)
