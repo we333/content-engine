@@ -76,11 +76,8 @@ class ContentEngine(object):
 def save_rec_res(result):
     #rt = result[0][0].decode("utf-8") + '\n' + result[1][0].decode("utf-8") + '\n' + result[2][0].decode("utf-8") + '\n' + result[3][0].decode("utf-8") + '\n' + result[4][0].decode("utf-8") 
     rt = ''
-    percent = ''
     for rest in result:
         rt = rt + rest[0].decode("utf-8") + '\n'
-        percent = rest[1].decode("utf-8") + '\n'
-        print(percent)
     fd = open('../../tfidf_answer.csv','w')
     fd.write(rt)
     fd.close()
@@ -99,6 +96,7 @@ content_engine.train('iroya_data.csv')
 item_number = read_item()
 res = content_engine.predict(item_number,5)
 
+print(res)
 save_rec_res(res)
 #save the recommend result to file
 
