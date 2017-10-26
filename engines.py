@@ -78,12 +78,12 @@ def save_rec_res(result):
     rt = ''
     for rest in result:
         rt = rt + rest[0].decode("utf-8") + '\n'
-    fd = open('../../tfidf_answer.csv','w')
+    fd = open('../tfidf_answer.csv','w')
     fd.write(rt)
     fd.close()
 
 def read_item():
-    f = open('../../question.csv','r')
+    f = open('../question.csv','r')
     str = ''
     for line in f:
         str = line.split('.jpg')[0]
@@ -91,7 +91,9 @@ def read_item():
         return str
 
 content_engine = ContentEngine()
-content_engine.train('iroya_data.csv')
+content_engine.train('../engine/tfidf-item/iroya_data.csv')
+#content_engine.train('/home/ubuntu/teamHTTP/serverPHP/engine/tfidf-item/iroya_data.csv')
+
 
 item_number = read_item()
 res = content_engine.predict(item_number,5)
