@@ -5,7 +5,7 @@ from flask import current_app
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
-
+   
 def info(msg):
     current_app.logger.info(msg)
 
@@ -78,12 +78,12 @@ def save_rec_res(result):
     rt = ''
     for rest in result:
         rt = rt + rest[0].decode("utf-8") + '\n'
-    fd = open('../tfidf_answer.csv','w')
+    fd = open('../ans_tfidf.csv','w') # relative path from php
     fd.write(rt)
     fd.close()
 
 def read_item():
-    f = open('../question.csv','r')
+    f = open('../q_tfidf.csv','r') # relative path from php
     str = ''
     for line in f:
         str = line.split('.jpg')[0]
@@ -91,7 +91,7 @@ def read_item():
         return str
 
 content_engine = ContentEngine()
-content_engine.train('../engine/tfidf-item/iroya_data.csv')
+content_engine.train('../hp_e_keyword.csv') # relative path from php
 #content_engine.train('/home/ubuntu/teamHTTP/serverPHP/engine/tfidf-item/iroya_data.csv')
 
 
